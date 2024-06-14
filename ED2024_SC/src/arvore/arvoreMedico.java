@@ -18,7 +18,7 @@ public class arvoreMedico {
 	public int getQuantNos(){
 		return this.quantNos;
 	}
-	//inserir um novo n� na arvore. Sempre insere em um atributo que seja igual a null
+	//inserir um novo no na arvore. Sempre insere em um atributo que seja igual a null
 	public boolean inserir (medico elem){
 		if (pesquisar (elem.getCrm())){ 
 			return false;
@@ -42,7 +42,7 @@ public class arvoreMedico {
 			}
 		}
 	}
-	//Pesquisa se um determinado valor est� na �rvore
+	//Pesquisa se um determinado valor esta na arvore
 	public boolean pesquisar (int chave){
 		if (pesquisar (chave, this.raiz)!= null){
 			return true;
@@ -62,8 +62,8 @@ public class arvoreMedico {
 		}
 		return no;
 	}
-//remove um determinado n� procurando pela chave. O n� pode estar em qualquer
-//posi��o na �rvore
+//remove um determinado no procurando pela chave. O no pode estar em qualquer
+//posicao na arvore
 	public boolean remover (int chave){
 		if (pesquisar (chave, this.raiz) != null){
 			this.raiz = remover (chave, this.raiz);
@@ -122,7 +122,7 @@ public class arvoreMedico {
 		}
 		return vet;
 	}
-	//caminhamento pr�-fixado
+	//caminhamento pre-fixado
 	public medico [] CamPreFixado (){
 		int []n= new int[1];
 		n[0]=0;
@@ -138,7 +138,7 @@ public class arvoreMedico {
 		}
 		return vet;
 	}
-	//caminhamento p�s-fixado
+	//caminhamento pos-fixado
 	public medico [] CamPosFixado (){
 		int []n= new int[1];
 		n[0]=0;
