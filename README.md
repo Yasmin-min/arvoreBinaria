@@ -8,6 +8,7 @@ classes:
 - noM *
 - noC *
 - main
+- menus
 
 Metodos: 
 - menu_Principal 
