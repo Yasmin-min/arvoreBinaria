@@ -7,7 +7,7 @@ public class main {
 	static Scanner scanner = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		menus munus = new menus();
+		menus menus = new menus();
 		menus.menuPrincipal();
 		int escolha;
 		escolha = scanner.nextInt();
@@ -128,8 +128,10 @@ public class main {
 		crm = scanner.nextInt();
 		System.out.println("Especialidade");
 		especialidade = scanner.next();
-		
 		medico medico = new medico(crm, nome, especialidade);
+		
+		arvoreMedico arvoreMedico = new arvoreMedico();
+		arvoreMedico.inserir(medico);
 	}
 	
 	public static void cadastro_convenio() {
@@ -145,8 +147,10 @@ public class main {
 		telefone = scanner.next();
 		System.out.println("CEP: ");
 		cep = scanner.next();
-		
 		convenio convenio = new convenio(nome, id, telefone, cep);
+		
+		arvoreConvenio arvoreConvenio = new arvoreConvenio();
+		arvoreConvenio.inserir(convenio);
 		
 	}
 	
@@ -167,6 +171,17 @@ public class main {
 		
 		
 	}
+	public static void mostrarArvore_Convenio() {
+		convenio[] vet;
+		arvoreConvenio arvoreConvenio = new arvoreConvenio();
+		
+		vet = arvoreConvenio.CamPosFixado();
+		for (int i = 0; i < vet.length; i++) {
+            System.out.print(vet[i] + " ");
+        }
+		
+	}
+	
 	public static void mostraArvore_Convenio() {
 		convenio[] vet;
 		arvoreConvenio arvoreConvenio = new arvoreConvenio();
@@ -183,12 +198,14 @@ public class main {
 	public static void pesquisa_Medico() {
 		arvoreMedico arvoreMedico = new arvoreMedico();
 		int crm;
+		int []dados_medico= new int[arvoreMedico.getQuantNos()];
 		
 		System.out.print("CRM do médico: ");
 		crm = scanner.nextInt();
 		
 		arvoreMedico.pesquisar(crm);
 		
+		//[] dados_medicos = arvoreMedico.CamPosFixado(crm);
 		
 		
 	}
