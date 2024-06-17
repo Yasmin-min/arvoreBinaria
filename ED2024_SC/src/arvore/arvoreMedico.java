@@ -155,7 +155,6 @@ public class arvoreMedico {
 		return vet;
 	}
 	
-	// pesquisa direta 
 	
 	public medico [] CamPreFixado1 (int crm){
 		int []n= new int[1];
@@ -175,19 +174,23 @@ public class arvoreMedico {
 	}
 	
 	
-	public medico pesquisaDireta (int crm) {
+	public void pesquisaDireta (int crm) {
 		NoArvM no= this.raiz;
+		medico medicotemp = new medico();
 		if (no != null){
 			if (crm < no.getInfo().getCrm()){
 				no = pesquisar (crm, no.getEsq());
+				medicotemp = no.getInfo();
+				
+				medicotemp.setNome(null);
+				medicotemp.setEspecialidade(null);
+				no.setInfo(medicotemp);
 			}else{
 				if (crm > no.getInfo().getCrm()){
 					no = pesquisar (crm, no.getDir());
 				}
 			}
 		}
-		return no;
-		
 	}
 }
 
