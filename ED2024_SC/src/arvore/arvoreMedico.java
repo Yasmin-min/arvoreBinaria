@@ -64,14 +64,14 @@ public class arvoreMedico {
 	}
 //remove um determinado no procurando pela chave. O no pode estar em qualquer
 //posicao na arvore
-	public boolean remover (int chave){
+	public NoArvM remover (int chave){
 		if (pesquisar (chave, this.raiz) != null){
 			this.raiz = remover (chave, this.raiz);
 			this.quantNos--;
-			return true;
+			return this.raiz;
 		}
 		else {
-			return false;
+			return this.raiz;
 		}
 	}
 	public NoArvM remover (int chave, NoArvM arv){
@@ -154,4 +154,56 @@ public class arvoreMedico {
 		}
 		return vet;
 	}
+	
+	// pesquisa direta 
+	
+	public medico [] CamPreFixado1 (int crm){
+		int []n= new int[1];
+		n[0]=0;
+		medico [] vet = new medico[this.quantNos];
+		return (FazCamPreFixado1 (this.raiz, vet, n, crm));
+	}
+	private medico [] FazCamPreFixado1 (NoArvM arv, medico [] vet, int []n, int crm){
+		
+		if (arv != null) {
+			vet[n[0]] = arv.getInfo();
+			n[0]++;
+			vet = FazCamPreFixado (arv.getEsq(), vet,n);
+			vet = FazCamPreFixado (arv.getDir(), vet,n);
+		}
+		return vet;
+	}
+	
+	
+	public medico pesquisaDireta (int crm) {
+		NoArvM no= this.raiz;
+		if (no != null){
+			if (crm < no.getInfo().getCrm()){
+				no = pesquisar (crm, no.getEsq());
+			}else{
+				if (crm > no.getInfo().getCrm()){
+					no = pesquisar (crm, no.getDir());
+				}
+			}
+		}
+		return no;
+		
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

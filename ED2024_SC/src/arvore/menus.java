@@ -11,7 +11,7 @@ public class menus {
     }
     
     public static void menuMedico() {
-    	System.out.println("\n---CADASTRO MÉDICO---");  
+    	System.out.println("\n---MENU MÉDICO---");  
         System.out.println("1. Inserir dados");
         System.out.println("2. Alterar dados");
         System.out.println("3. Remover dados");
@@ -21,7 +21,7 @@ public class menus {
     }
     
     public  static void menuConvenio() {
-    	System.out.println("\n---CADASTRO CONVÊNIO---");
+    	System.out.println("\n---MENU CONVÊNIO---");
         System.out.println("1. Inserir dados");
         System.out.println("2. Alterar dados");
         System.out.println("3. Remover dados");

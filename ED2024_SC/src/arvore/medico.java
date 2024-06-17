@@ -5,11 +5,20 @@ public class medico {
     private int crm;
     private String nome;
     private String especialidade;
+    private int [] convenios;
 
-    public medico(int crm, String nome, String especialidade) {
+    public medico(int crm, String nome, String especialidade, int [] convenios) {
         this.crm = crm;
         this.nome = nome;
         this.especialidade = especialidade;
+        this.convenios = convenios; 
+    }
+    
+    public medico() {
+    	this.crm = 0;
+    	this.nome = "";
+    	this.especialidade = "";
+    	this.convenios = null;
     }
 
     public int getCrm() {
@@ -34,6 +43,14 @@ public class medico {
 
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
+    }
+    
+    public int [] getConvenios() {
+        return convenios;
+    }
+
+    public void getConvenios(int [] convenios) {
+        this.convenios = convenios;
     }
 
 }

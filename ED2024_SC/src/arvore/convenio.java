@@ -6,7 +6,7 @@ public class convenio {
 	    private int id;
 	    private String telefone;
 	    private String cep;
-
+	    
 	    
 	    public convenio(String nome, int id, String telefone, String cep) {
 	        this.nome = nome;
@@ -46,6 +46,5 @@ public class convenio {
 	    public void setCep(String cep) {
 	        this.cep = cep;
 	    }
-
 	   
 }
