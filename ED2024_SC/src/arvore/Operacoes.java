@@ -33,16 +33,43 @@ public class Operacoes {
 	
 	public static void editar_medico() {   //não esta pronto
 		arvoreMedico arvoreMedico = new arvoreMedico();
-		int crm;
+		int crm, opcao;
 		boolean retorno;
 		NoArvM dadosMedico;
+		String nome = null, especialidade = null; 
 		
 		System.out.println("---EDITAR MÉDICO---");
 		System.out.println("CRM do médico: ");
 		crm = scanner.nextInt(); 
 		retorno = arvoreMedico.pesquisar(crm);
+	
+		//mostrar dados do medico; 
+		
 		if (retorno == true) {
-			//dadosMedico = arvoreMedico.pesquisaDireta(crm);
+			do {
+				System.out.println("Digite o número da opção que você deseja editar: "
+						+ "\n 1.Nome;"
+						+ "\n 2.Especialidade;"
+						+ "\n 3.Nome e Especialidade;");
+				opcao = scanner.nextInt();
+			}while(opcao<1 && opcao>3);
+			
+			if(opcao == 1) {
+				System.out.println("Nome: ");
+				nome = scanner.next();
+				
+			} else if(opcao == 2) {	
+				System.out.println("Especialidade: ");
+				especialidade = scanner.next();
+				
+			}else if (opcao == 3) {
+				System.out.println("Nome: ");
+				nome = scanner.next();
+				System.out.println("Especialidade: ");
+				especialidade = scanner.next();
+			} 
+			arvoreMedico.atualizarMedicoNo(crm, nome, especialidade);
+			
 		} else {
 			System.out.println("Médico não encotrado!");
 		}

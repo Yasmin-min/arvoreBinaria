@@ -156,43 +156,20 @@ public class arvoreMedico {
 	}
 	
 	
-	public medico [] CamPreFixado1 (int crm){
-		int []n= new int[1];
-		n[0]=0;
-		medico [] vet = new medico[this.quantNos];
-		return (FazCamPreFixado1 (this.raiz, vet, n, crm));
-	}
-	private medico [] FazCamPreFixado1 (NoArvM arv, medico [] vet, int []n, int crm){
-		
-		if (arv != null) {
-			vet[n[0]] = arv.getInfo();
-			n[0]++;
-			vet = FazCamPreFixado (arv.getEsq(), vet,n);
-			vet = FazCamPreFixado (arv.getDir(), vet,n);
-		}
-		return vet;
-	}
-	
-	
-	public void pesquisaDireta (int crm) {
-		NoArvM no= this.raiz;
-		medico medicotemp = new medico();
+	public void atualizarMedicoNo(int crm, String nome, String especialidades){
+		NoArvM no = pesquisar(crm, this.raiz);
 		if (no != null){
-			if (crm < no.getInfo().getCrm()){
-				no = pesquisar (crm, no.getEsq());
-				medicotemp = no.getInfo();
-				
-				medicotemp.setNome(null);
-				medicotemp.setEspecialidade(null);
-				no.setInfo(medicotemp);
-			}else{
-				if (crm > no.getInfo().getCrm()){
-					no = pesquisar (crm, no.getDir());
-				}
-			}
+			no.getInfo().setNome(nome);
+			no.getInfo().setEspecialidade(especialidades);
 		}
+	}
+	
+	public String [] mostrarMedico() {  //fazer 
+		
+		
 	}
 }
+
 
 
 
