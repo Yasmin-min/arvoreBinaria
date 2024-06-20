@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 public class Operacoes {
 	static Scanner scanner = new Scanner(System.in);
+	static arvoreMedico arvoreMedico = new arvoreMedico();
+	static arvoreConvenio arvoreConvenio = new arvoreConvenio();
+
 	
 	public static void cadastro_Medico() {
-		arvoreConvenio arvoreConvenio = new arvoreConvenio();
 		int crm, convenio;
 		String nome, especialidade; 
 		int [] convenios;
@@ -27,12 +29,10 @@ public class Operacoes {
 		}
 		medico medico = new medico(crm, nome, especialidade, convenios);
 		
-		arvoreMedico arvoreMedico = new arvoreMedico();
 		arvoreMedico.inserir(medico);
 	}
 	
 	public static void editar_medico() {   //não esta pronto
-		arvoreMedico arvoreMedico = new arvoreMedico();
 		int crm, opcao;
 		boolean retorno;
 		NoArvM dadosMedico;
@@ -45,7 +45,7 @@ public class Operacoes {
 	
 		//mostrar dados do medico; 
 		
-		if (retorno == true) {
+		if (retorno == true) {    //não esta pronto
 			do {
 				System.out.println("Digite o número da opção que você deseja editar: "
 						+ "\n 1.Nome;"
@@ -77,7 +77,6 @@ public class Operacoes {
 	}
 	
 	public static void remover_Medico() {
-		arvoreMedico arvoreMedico = new arvoreMedico();
 		int crm;
 		boolean retorno;
 		System.out.println("---EXCLUIR MÉDICO---");
@@ -110,14 +109,12 @@ public class Operacoes {
 		
 		convenio convenio = new convenio(nome, id, telefone, cep);
 		
-		arvoreConvenio arvoreConvenio = new arvoreConvenio();
 		arvoreConvenio.inserir(convenio);
 		
 	}
 	
 	public static void editar_Convenio() {   //não esta pronto 
 		
-		arvoreConvenio arvoreConvenio = new arvoreConvenio();
 		int id;
 		boolean retorno;
 		System.out.println("---EDITAR CONVÊNIO---");
@@ -133,7 +130,6 @@ public class Operacoes {
 	}
 	
 	public static void remover_Convenio() {
-		arvoreConvenio arvoreConvenio = new arvoreConvenio();
 		int id;
 		boolean retorno;
 		System.out.println("---EXCLUIR CONVÊNIO---");
@@ -150,7 +146,6 @@ public class Operacoes {
 	
 	public static void mostraArvore_Medico() {   //não esta pronto 
 		medico[] vet;
-		arvoreMedico arvoreMedico = new arvoreMedico();
 		
 		vet = arvoreMedico.CamPosFixado();
 		System.out.print("---ÁRVORE DE MÉDICOS---");
@@ -163,7 +158,6 @@ public class Operacoes {
 	
 	public static void mostraArvore_Convenio() {    //não esta pronto 
 		convenio[] vet;
-		arvoreConvenio arvoreConvenio = new arvoreConvenio();
 		
 		vet = arvoreConvenio.CamPosFixado();
 		
@@ -176,7 +170,6 @@ public class Operacoes {
 	
 	public static void pesquisa_Medico() {     //não esta pronto 
 		
-		arvoreMedico arvoreMedico = new arvoreMedico();
 		int crm;
 		boolean retorno;
 		System.out.println("---DADOS DO MÉDICO---");
@@ -195,7 +188,6 @@ public class Operacoes {
 	
 	 
 	public static void pesquisa_Convenio() {     //não esta pronto 
-		arvoreConvenio arvoreConvenio = new arvoreConvenio();
 		int id;
 		boolean retorno;
 		System.out.println("---DADOS DO CONVÊNIO---");
