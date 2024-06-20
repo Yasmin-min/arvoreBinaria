@@ -144,7 +144,7 @@ public class Operacoes {
 		}
 	}
 	
-	public static void mostraArvore_Medico() {   //não esta pronto 
+	public static void mostraArvore_Medico() { 
 		medico[] vet;
 		
 		vet = arvoreMedico.CamPosFixado();
@@ -156,7 +156,7 @@ public class Operacoes {
 		
 	}
 	
-	public static void mostraArvore_Convenio() {    //não esta pronto 
+	public static void mostraArvore_Convenio() {  
 		convenio[] vet;
 		
 		vet = arvoreConvenio.CamPosFixado();
