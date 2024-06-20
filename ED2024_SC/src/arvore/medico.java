@@ -51,7 +51,7 @@ public class medico {
         return convenios;
     }
 
-    public void getConvenios(int [] convenios) {
+    public void setConvenios(int [] convenios) {
         this.convenios = convenios;
     }
 

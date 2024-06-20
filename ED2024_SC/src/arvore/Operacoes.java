@@ -6,7 +6,7 @@ public class Operacoes {
 	static Scanner scanner = new Scanner(System.in);
 	static arvoreMedico arvoreMedico = new arvoreMedico();
 	static arvoreConvenio arvoreConvenio = new arvoreConvenio();
-
+	static medico medico = new medico();
 	
 	public static void cadastro_Medico() {
 		int crm, convenio;
@@ -21,31 +21,32 @@ public class Operacoes {
 		crm = scanner.nextInt();
 		System.out.println("Especialidade: ");
 		especialidade = scanner.next();
-		for (int i=0; i>=5; i++) {
+		/*for (int i=0; i>=5; i++) {
 			System.out.println("ID dos convênios que ele atua: ");
 			convenio = scanner.nextInt();
 			convenios[i] = convenio;
 			
-		}
+		}*/
 		medico medico = new medico(crm, nome, especialidade, convenios);
 		
 		arvoreMedico.inserir(medico);
 	}
 	
-	public static void editar_medico() {   //não esta pronto
+	public static void editar_medico() { 
 		int crm, opcao;
 		boolean retorno;
 		NoArvM dadosMedico;
-		String nome = null, especialidade = null; 
 		
 		System.out.println("---EDITAR MÉDICO---");
 		System.out.println("CRM do médico: ");
 		crm = scanner.nextInt(); 
 		retorno = arvoreMedico.pesquisar(crm);
-	
-		//mostrar dados do medico; 
+		medico medicoaux = arvoreMedico.pesquisarMedico(crm);
+		String nome = medicoaux.getNome(), especialidade = medicoaux.getEspecialidade();
 		
-		if (retorno == true) {    //não esta pronto
+		System.out.println(arvoreMedico.pesquisarMedico(crm)); 
+		
+		if (retorno == true) {    
 			do {
 				System.out.println("Digite o número da opção que você deseja editar: "
 						+ "\n 1.Nome;"
@@ -57,7 +58,6 @@ public class Operacoes {
 			if(opcao == 1) {
 				System.out.println("Nome: ");
 				nome = scanner.next();
-				
 			} else if(opcao == 2) {	
 				System.out.println("Especialidade: ");
 				especialidade = scanner.next();
@@ -113,16 +113,39 @@ public class Operacoes {
 		
 	}
 	
-	public static void editar_Convenio() {   //não esta pronto 
+	public static void editar_Convenio() { 
 		
-		int id;
+		int id, opcao;
 		boolean retorno;
 		System.out.println("---EDITAR CONVÊNIO---");
 		System.out.println("ID do convênio: ");
 		id = scanner.nextInt(); 
 		retorno = arvoreConvenio.pesquisar(id);
+		convenio convenioaux = arvoreConvenio.pesquisarConvenio(id);
+		String nome = convenioaux.getNome(), telefone = convenioaux.getTelefone(), cep = convenioaux.getCep();
+		
+		System.out.println(arvoreConvenio.pesquisarConvenio(id)); 
 		if (retorno == true) {
-			//editar o no
+			do {
+				System.out.println("Digite o número da opção que você deseja editar: "
+						+ "\n 1.Nome;"
+						+ "\n 2.Telefone;"
+						+ "\n 3.Cep;");
+				opcao = scanner.nextInt();
+			}while(opcao<1 && opcao>3);
+			
+			if(opcao == 1) {
+				System.out.println("Nome: ");
+				nome = scanner.next();
+			} else if(opcao == 2) {	
+				System.out.println("Telefone: ");
+				telefone = scanner.next();
+				
+			}else if (opcao == 3) {
+				System.out.println("CEP: ");
+				cep = scanner.next();
+			} 
+			arvoreConvenio.atualizarConvenioNo(id, nome, telefone, cep);
 		} else {
 			System.out.println("Convênio não encotrado!");
 		}
@@ -168,7 +191,7 @@ public class Operacoes {
 		
 	}
 	
-	public static void pesquisa_Medico() {     //não esta pronto 
+	public static void pesquisa_Medico() {    
 		
 		int crm;
 		boolean retorno;
@@ -177,7 +200,7 @@ public class Operacoes {
 		crm = scanner.nextInt();
 		retorno = arvoreMedico.pesquisar(crm);
 		if (retorno == true) {
-			//mostrar os dados
+			System.out.println(arvoreMedico.pesquisarMedico(crm));
 		} else {
 			System.out.println("Médico não encotrado!");
 		}
@@ -187,7 +210,7 @@ public class Operacoes {
 
 	
 	 
-	public static void pesquisa_Convenio() {     //não esta pronto 
+	public static void pesquisa_Convenio() { 
 		int id;
 		boolean retorno;
 		System.out.println("---DADOS DO CONVÊNIO---");
@@ -195,7 +218,7 @@ public class Operacoes {
 		id = scanner.nextInt();
 		retorno = arvoreConvenio.pesquisar(id);
 		if (retorno == true) {
-			//mostrar os dados
+			System.out.println(arvoreConvenio.pesquisarConvenio(id));
 		} else {
 			System.out.println("Convênio não encotrado");	
 		}

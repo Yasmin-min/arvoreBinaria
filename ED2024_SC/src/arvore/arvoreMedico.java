@@ -178,7 +178,23 @@ public class arvoreMedico {
 		//pesquisar (crm, this.raiz);
 			
 		
-	//} turu
+	public medico pesquisarMedico (int chave){
+	
+		return (pesquisarMedico (chave, this.raiz).getInfo());
+		
+	}
+	private NoArvM pesquisarMedico (int chave, NoArvM no){
+		if (no != null){
+			if (chave < no.getInfo().getCrm()){
+				no = pesquisar (chave, no.getEsq());
+			}else{
+				if (chave > no.getInfo().getCrm()){
+					no = pesquisar (chave, no.getDir());
+				}
+			}
+		}
+		return no;
+	}
 }
 
 

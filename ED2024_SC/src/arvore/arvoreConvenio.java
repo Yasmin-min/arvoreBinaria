@@ -154,5 +154,42 @@ public class arvoreConvenio {
 		}
 		return vet;
 	}
+	
+	public void atualizarConvenioNo(int id, String nome, String telefone, String cep) {
+		atualizarConvenioNo(this.raiz, id, nome, telefone, cep);
+	}
 
+	private void atualizarConvenioNo(NoArvC no,int id, String nome, String telefone, String cep) {
+		if (no != null) {
+			if (id < no.getInfo().getId()) {
+				atualizarConvenioNo(no.getEsq(), id, nome, telefone, cep);
+			} else if (id > no.getInfo().getId()) {
+				atualizarConvenioNo(no.getDir(), id, nome, telefone, cep);
+			} else {
+				no.getInfo().setNome(nome);
+				no.getInfo().setTelefone(telefone);
+				no.getInfo().setCep(cep);
+			}
+		}
+	}
+			
+	public convenio pesquisarConvenio (int chave){
+	
+		return (pesquisarConvenio (chave, this.raiz).getInfo());
+		
+	}
+	private NoArvC pesquisarConvenio (int chave, NoArvC no){
+		if (no != null){
+			if (chave < no.getInfo().getId()){
+				no = pesquisar (chave, no.getEsq());
+			}else{
+				if (chave > no.getInfo().getId()){
+					no = pesquisar (chave, no.getDir());
+				}
+			}
+		}
+		return no;
+	}
+	
+	
 }
