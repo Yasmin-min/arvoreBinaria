@@ -35,9 +35,11 @@ public class Operacoes {
 		arvoreMedico.inserir(medico);
 	}
 	
-	public static void editar_medico() { 
-		int crm, opcao = 0, id;
+	public static void editar_medico() {   //adicionar id no vet sem perder os antigos
+		int crm, opcao = 0;
 		boolean retorno;
+		int [] idaux;
+		int [] id = new int [arvoreConvenio.getQuantNos()];
 		
 		System.out.println("---EDITAR MÉDICO---");
 		System.out.println("CRM do médico: ");
@@ -45,7 +47,7 @@ public class Operacoes {
 		retorno = arvoreMedico.pesquisar(crm);
 		medico medicoaux = arvoreMedico.pesquisarMedico(crm);
 		String nome = medicoaux.getNome(), especialidade = medicoaux.getEspecialidade();
-		
+		idaux = medicoaux.getConvenios();
 		System.out.println(arvoreMedico.pesquisarMedico(crm)); 
 		
 		do {
@@ -67,7 +69,7 @@ public class Operacoes {
 					
 				}else if (opcao == 3) {
 					System.out.println("ID do convênio: ");
-					id = scanner.nextInt();
+					//id = scanner.nextInt(); 
 				} 
 				arvoreMedico.atualizarMedicoNo(crm, nome, especialidade);
 				
