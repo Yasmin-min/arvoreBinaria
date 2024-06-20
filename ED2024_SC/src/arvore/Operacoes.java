@@ -6,12 +6,11 @@ public class Operacoes {
 	static Scanner scanner = new Scanner(System.in);
 	static arvoreMedico arvoreMedico = new arvoreMedico();
 	static arvoreConvenio arvoreConvenio = new arvoreConvenio();
-	static medico medico = new medico();
 	
 	public static void cadastro_Medico() {
 		int crm, convenio;
 		String nome, especialidade; 
-		int [] convenios;
+		int [] convenios = new int [arvoreConvenio.getQuantNos()];
 		convenios = new int [arvoreConvenio.getQuantNos()];
 		
 		System.out.println("---CADASTRO MÉDICO---");
@@ -20,22 +19,25 @@ public class Operacoes {
 		System.out.println("CRM: ");
 		crm = scanner.nextInt();
 		System.out.println("Especialidade: ");
+		
+		  int numConvenios = arvoreConvenio.getQuantNos();
+		   convenios = new int[numConvenios];
+		   
 		especialidade = scanner.next();
-		/*for (int i=0; i>=5; i++) {
-			System.out.println("ID dos convênios que ele atua: ");
-			convenio = scanner.nextInt();
-			convenios[i] = convenio;
-			
-		}*/
+		for (int i = 0; i < numConvenios; i++) {
+	        System.out.println("ID do convênio " + (i + 1) + " que ele atua: ");
+	        convenio = scanner.nextInt();
+	        convenios[i] = convenio;
+	    }
+		
 		medico medico = new medico(crm, nome, especialidade, convenios);
 		
 		arvoreMedico.inserir(medico);
 	}
 	
 	public static void editar_medico() { 
-		int crm, opcao;
+		int crm, opcao = 0, id;
 		boolean retorno;
-		NoArvM dadosMedico;
 		
 		System.out.println("---EDITAR MÉDICO---");
 		System.out.println("CRM do médico: ");
@@ -46,33 +48,33 @@ public class Operacoes {
 		
 		System.out.println(arvoreMedico.pesquisarMedico(crm)); 
 		
-		if (retorno == true) {    
-			do {
-				System.out.println("Digite o número da opção que você deseja editar: "
-						+ "\n 1.Nome;"
-						+ "\n 2.Especialidade;"
-						+ "\n 3.Nome e Especialidade;");
-				opcao = scanner.nextInt();
-			}while(opcao<1 && opcao>3);
-			
-			if(opcao == 1) {
-				System.out.println("Nome: ");
-				nome = scanner.next();
-			} else if(opcao == 2) {	
-				System.out.println("Especialidade: ");
-				especialidade = scanner.next();
+		do {
+			if (retorno == true) {    
+				do {
+					System.out.println("Digite o número da opção que você deseja editar: "
+							+ "\n 1.Nome;"
+							+ "\n 2.Especialidade;"
+							+ "\n 3.Adicionar Convênio;");
+					opcao = scanner.nextInt();
+				}while(opcao<1 && opcao>3);
 				
-			}else if (opcao == 3) {
-				System.out.println("Nome: ");
-				nome = scanner.next();
-				System.out.println("Especialidade: ");
-				especialidade = scanner.next();
-			} 
-			arvoreMedico.atualizarMedicoNo(crm, nome, especialidade);
-			
-		} else {
-			System.out.println("Médico não encotrado!");
-		}
+				if(opcao == 1) {
+					System.out.println("Nome: ");
+					nome = scanner.next();
+				} else if(opcao == 2) {	
+					System.out.println("Especialidade: ");
+					especialidade = scanner.next();
+					
+				}else if (opcao == 3) {
+					System.out.println("ID do convênio: ");
+					id = scanner.nextInt();
+				} 
+				arvoreMedico.atualizarMedicoNo(crm, nome, especialidade);
+				
+			} else {
+				System.out.println("Médico não encotrado!");
+			}
+		}while(opcao <=0 && opcao >=4);
 		
 	}
 	
@@ -170,7 +172,7 @@ public class Operacoes {
 	public static void mostraArvore_Medico() { 
 		medico[] vet;
 		
-		vet = arvoreMedico.CamPosFixado();
+		vet = arvoreMedico.CamPreFixado();
 		System.out.print("---ÁRVORE DE MÉDICOS---");
 		for (int i = 0; i < vet.length; i++) {
             System.out.print("\n"+vet[i].toString() + " ");
@@ -182,7 +184,7 @@ public class Operacoes {
 	public static void mostraArvore_Convenio() {  
 		convenio[] vet;
 		
-		vet = arvoreConvenio.CamPosFixado();
+		vet = arvoreConvenio.CamPreFixado();
 		
 		System.out.print("---ÁRVORE DE CONVÊNIOS---");
 		for (int i = 0; i < vet.length; i++) {
@@ -226,8 +228,36 @@ public class Operacoes {
 	}
 	
 	public static void medico_Convenios() {     //não esta pronto 
+		int crm;
+		boolean retorno;
+		int tamanho = arvoreConvenio.getQuantNos();
+		int[] vet = new int [tamanho];
+		convenio [] vet2 = new convenio [tamanho];
 		
-	
+		
+		System.out.println("---CONVÊNIOS QUE ATUA---");
+		System.out.println("Digite o CRM do médico que deseja: ");
+		crm = scanner.nextInt();
+		medico medicoaux = arvoreMedico.pesquisarMedico(crm);
+		retorno = arvoreMedico.pesquisar(crm);
+		vet = medicoaux.getConvenios();
+		do {
+		if (retorno == true) {    
+			for (int i=0; i<= tamanho; i++) {
+				vet2[i] = arvoreConvenio.pesquisarConvenio(vet[i]);
+			}
+			System.out.println(medicoaux.getNome());
+			System.out.println("Convenios: ");
+			for (int i=0; i<= tamanho; i++) {
+				System.out.println("\n"+vet2[i]);
+			}
+			
+		} else {
+			System.out.println("Médico não encotrado!");
+			
+		}
+		}while(retorno == false);
+		
 	}
 	
 	
