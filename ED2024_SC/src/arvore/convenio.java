@@ -46,5 +46,12 @@ public class convenio {
 	    public void setCep(String cep) {
 	        this.cep = cep;
 	    }
+
+		
+		public String toString() {
+			return "convenio [nome: " + nome + ", id: " + id + ", telefone: " + telefone + ", cep: " + cep + "]";
+		}
+	    
+	    
 	   
 }

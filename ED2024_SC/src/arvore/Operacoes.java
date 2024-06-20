@@ -150,7 +150,7 @@ public class Operacoes {
 		vet = arvoreMedico.CamPosFixado();
 		System.out.print("---ÁRVORE DE MÉDICOS---");
 		for (int i = 0; i < vet.length; i++) {
-            System.out.print(vet[i] + " ");
+            System.out.print("\n"+vet[i].toString() + " ");
         }
 		
 		
@@ -163,7 +163,7 @@ public class Operacoes {
 		
 		System.out.print("---ÁRVORE DE CONVÊNIOS---");
 		for (int i = 0; i < vet.length; i++) {
-            System.out.print(vet[i] + " ");
+            System.out.print("\n"+vet[i].toString() + " ");
         }
 		
 	}

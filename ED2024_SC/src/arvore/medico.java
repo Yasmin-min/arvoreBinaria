@@ -1,5 +1,7 @@
 package arvore;
 
+import java.util.Arrays;
+
 public class medico {
 
     private int crm;
@@ -53,4 +55,10 @@ public class medico {
         this.convenios = convenios;
     }
 
+	public String toString() {
+		return "medico [crm: " + crm + ", nome: " + nome + ", especialidade: " + especialidade + ", convenios: "
+				+ Arrays.toString(convenios) + "]";
+	}
+
+    
 }
