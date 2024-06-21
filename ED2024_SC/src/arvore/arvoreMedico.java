@@ -172,11 +172,6 @@ public class arvoreMedico {
 			}
 		}
 	}
-	
-	//public String [] mostrarMedico(int crm) { 
-		
-		//pesquisar (crm, this.raiz);
-			
 		
 	public medico pesquisarMedico (int chave){
 	
