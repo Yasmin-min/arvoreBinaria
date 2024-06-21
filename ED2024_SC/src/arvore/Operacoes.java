@@ -10,6 +10,7 @@ public class Operacoes {
 	public static void cadastro_Medico() {
 		int crm, convenio;
 		String nome, especialidade; 
+		boolean retorno;
 		int [] convenios = new int [arvoreConvenio.getQuantNos()];
 		convenios = new int [arvoreConvenio.getQuantNos()];
 		
@@ -22,61 +23,119 @@ public class Operacoes {
 		
 		  int numConvenios = arvoreConvenio.getQuantNos();
 		   convenios = new int[numConvenios];
-		   
 		especialidade = scanner.next();
-		for (int i = 0; i < numConvenios; i++) {
-	        System.out.println("ID do convênio " + (i + 1) + " que ele atua: ");
-	        convenio = scanner.nextInt();
-	        convenios[i] = convenio;
-	    }
+		int x=1;
+		
+		System.out.println("Desenha cadastrar um id de convênio:"
+        		+ "\n1.SIM"
+        		+ "\n2.NÃO");
+        x = scanner.nextInt();
+		while (x==1) {
+			int i=0;
+			
+	        do {
+	        	System.out.println("ID do convênio que ele atua: ");
+	        	convenio = scanner.nextInt();
+		        retorno = arvoreConvenio.pesquisar(convenio);
+		        if (retorno==true) {
+		        	convenios[i] = convenio;
+		        	i++;
+		        } else {
+		        	System.out.println("Id de convenio não encontrado, tente um id já cadastrado!");
+		        }
+	        }while(retorno==false);
+	        System.out.println("Desenha cadastrar mais um id de convênio:"
+	        		+ "\n1.SIM"
+	        		+ "\n2.NÃO");
+	        x = scanner.nextInt();
+	        
+		}
 		
 		medico medico = new medico(crm, nome, especialidade, convenios);
 		
 		arvoreMedico.inserir(medico);
 	}
 	
-	public static void editar_medico() {   //adicionar id no vet sem perder os antigos
+	public static void editar_medico() {
 		int crm, opcao = 0;
-		boolean retorno;
-		int [] idaux;
-		int [] id = new int [arvoreConvenio.getQuantNos()];
+	    boolean retorno, retornoC;
+	    
+	    System.out.println("---EDITAR MÉDICO---");
+	    System.out.println("CRM do médico: ");
+	    crm = scanner.nextInt();
+	    
+	    // Verifica se o médico com o CRM especificado existe na árvore
+	    retorno = arvoreMedico.pesquisar(crm);
+	    if (retorno) {
+	        medico medicoaux = arvoreMedico.pesquisarMedico(crm);
+	        String nome = medicoaux.getNome();
+	        String especialidade = medicoaux.getEspecialidade();
+	        int[] idaux = medicoaux.getConvenios();
+	        
+	        // Copia os IDs de convênios de idaux para id
+	        int[] id = new int[idaux.length];
+	        for (int i = 0; i < idaux.length; i++) {
+	            id[i] = idaux[i];
+	        }
+	        
+	        // Exibe informações do médico encontrado
+	        System.out.println("Médico encontrado:");
+	        System.out.println("Nome: " + nome);
+	        System.out.println("Especialidade: " + especialidade);
+	        System.out.println("Convênios:");
+	        for (int i = 0; i < id.length; i++) {
+	            System.out.println(id[i]);
+	        }
+	        
+	        // Menu para edição
+	        do {
+	            System.out.println("Digite o número da opção que você deseja editar:");
+	            System.out.println("1. Nome");
+	            System.out.println("2. Especialidade");
+	            System.out.println("3. Adicionar Convênio");
+	            System.out.println("4. Sair");
+	            opcao = scanner.nextInt();
+	            
+	            switch (opcao) {
+	                case 1:
+	                    System.out.println("Novo nome: ");
+	                    nome = scanner.next();
+	                    break;
+	                case 2:
+	                    System.out.println("Nova especialidade: ");
+	                    especialidade = scanner.next();
+	                    break;
+	                case 3:
+	                	do {
+		                    System.out.println("ID do convênio a adicionar: ");
+		                    int novoConvenio = scanner.nextInt();
+		                    retornoC = arvoreConvenio.pesquisar(novoConvenio);
+		                    
+		                    int[] novoId = new int[id.length + 1];
+		                    for (int i = 0; i < id.length; i++) {
+		                        novoId[i] = id[i];
+		                    }
+		                    novoId[id.length] = novoConvenio;
+		                    id = novoId;
+		                    if(retornoC==false) {
+		                    	System.out.println("Convenio não encontrado, tente um já cadastrado!");
+		                    }
+	                	} while(retornoC==false);
+	                    break;
+	                default:
+	                    System.out.println("Opção inválida.");
+	                    break;
+	            }
+	            
+	        } while (opcao >= 1 && opcao <= 3);
+	        
+	        // Atualiza as informações do médico na árvore
+	        arvoreMedico.atualizarMedicoNo(crm, nome, especialidade);
 		
-		System.out.println("---EDITAR MÉDICO---");
-		System.out.println("CRM do médico: ");
-		crm = scanner.nextInt(); 
-		retorno = arvoreMedico.pesquisar(crm);
-		medico medicoaux = arvoreMedico.pesquisarMedico(crm);
-		String nome = medicoaux.getNome(), especialidade = medicoaux.getEspecialidade();
-		idaux = medicoaux.getConvenios();
-		System.out.println(arvoreMedico.pesquisarMedico(crm)); 
-		
-		do {
-			if (retorno == true) {    
-				do {
-					System.out.println("Digite o número da opção que você deseja editar: "
-							+ "\n 1.Nome;"
-							+ "\n 2.Especialidade;"
-							+ "\n 3.Adicionar Convênio;");
-					opcao = scanner.nextInt();
-				}while(opcao<1 && opcao>3);
-				
-				if(opcao == 1) {
-					System.out.println("Nome: ");
-					nome = scanner.next();
-				} else if(opcao == 2) {	
-					System.out.println("Especialidade: ");
-					especialidade = scanner.next();
-					
-				}else if (opcao == 3) {
-					System.out.println("ID do convênio: ");
-					//id = scanner.nextInt(); 
-				} 
-				arvoreMedico.atualizarMedicoNo(crm, nome, especialidade);
-				
-			} else {
-				System.out.println("Médico não encotrado!");
-			}
-		}while(opcao <=0 && opcao >=4);
+	        
+	    } else {
+	        System.out.println("Médico não encontrado!");
+	    }
 		
 	}
 	
@@ -84,15 +143,15 @@ public class Operacoes {
 		int crm;
 		boolean retorno;
 		System.out.println("---EXCLUIR MÉDICO---");
-		System.out.println("CRM do médico: ");
-		crm = scanner.nextInt(); 
-		retorno = arvoreMedico.pesquisar(crm);
-		if (retorno == true) {
-			arvoreMedico.remover(crm);	
-			System.out.println("Médico removido com sucesso!");
-		} else {
-			System.out.println("Médico não encotrado");	
-		}
+			System.out.println("CRM do médico: ");
+			crm = scanner.nextInt(); 
+			retorno = arvoreMedico.pesquisar(crm);
+			if (retorno == true) {
+				arvoreMedico.remover(crm);	
+				System.out.println("Médico removido com sucesso!");
+			} else {
+				System.out.println("Médico não encotrado");	
+			}
 	}
 	
 	
@@ -125,11 +184,11 @@ public class Operacoes {
 		System.out.println("ID do convênio: ");
 		id = scanner.nextInt(); 
 		retorno = arvoreConvenio.pesquisar(id);
-		convenio convenioaux = arvoreConvenio.pesquisarConvenio(id);
-		String nome = convenioaux.getNome(), telefone = convenioaux.getTelefone(), cep = convenioaux.getCep();
 		
-		System.out.println(arvoreConvenio.pesquisarConvenio(id)); 
 		if (retorno == true) {
+			convenio convenioaux = arvoreConvenio.pesquisarConvenio(id);
+			String nome = convenioaux.getNome(), telefone = convenioaux.getTelefone(), cep = convenioaux.getCep();
+			System.out.println(arvoreConvenio.pesquisarConvenio(id)); 
 			do {
 				System.out.println("Digite o número da opção que você deseja editar: "
 						+ "\n 1.Nome;"
@@ -208,8 +267,6 @@ public class Operacoes {
 		} else {
 			System.out.println("Médico não encotrado!");
 		}
-		/*
-		//[] dados_medicos = arvoreMedico.CamPosFixado(crm); */
 	}
 
 	
@@ -262,19 +319,4 @@ public class Operacoes {
 		
 	}
 	
-	
-	
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
