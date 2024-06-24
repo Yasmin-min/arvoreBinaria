@@ -43,7 +43,7 @@ public class Operacoes {
 		        	i++;
 		        } else {
 		        	System.out.println("Id de convenio não encontrado, tente um id já cadastrado!");
-		        	System.out.println("Desenha cadastrar um id de convênio:"
+		        	System.out.println("Desenha tentar outro id de convênio?"
 		            		+ "\n1.SIM"
 		            		+ "\n2.NÃO");
 		            x = scanner.nextInt();
@@ -52,10 +52,6 @@ public class Operacoes {
 		            }
 		        }
 	        }while(retorno==false);
-	        System.out.println("Desenha cadastrar mais um id de convênio:"
-	        		+ "\n1.SIM"
-	        		+ "\n2.NÃO");
-	        x = scanner.nextInt();
 	        
 		}
 		
