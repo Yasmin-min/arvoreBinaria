@@ -156,19 +156,20 @@ public class arvoreMedico {
 	}
 	
 	
-	public void atualizarMedicoNo(int crm, String nome, String especialidades) {
-		atualizarMedicoNo(this.raiz, crm, nome, especialidades);
+	public void atualizarMedicoNo(int crm, String nome, String especialidades, int [] id) {
+		atualizarMedicoNo(this.raiz, crm, nome, especialidades, id);
 	}
 
-	private void atualizarMedicoNo(NoArvM no, int crm, String nome, String especialidades) {
+	private void atualizarMedicoNo(NoArvM no, int crm, String nome, String especialidades, int [] id) {
 		if (no != null) {
 			if (crm < no.getInfo().getCrm()) {
-				atualizarMedicoNo(no.getEsq(), crm, nome, especialidades);
+				atualizarMedicoNo(no.getEsq(), crm, nome, especialidades, id);
 			} else if (crm > no.getInfo().getCrm()) {
-				atualizarMedicoNo(no.getDir(), crm, nome, especialidades);
+				atualizarMedicoNo(no.getDir(), crm, nome, especialidades, id);
 			} else {
 				no.getInfo().setNome(nome);
 				no.getInfo().setEspecialidade(especialidades);
+				no.getInfo().setConvenios(id);
 			}
 		}
 	}

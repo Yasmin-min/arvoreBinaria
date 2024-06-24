@@ -7,7 +7,7 @@ public class medico {
     private int crm;
     private String nome;
     private String especialidade;
-    private int [] convenios;   //tem que dizer o tamanho???
+    private int [] convenios;  
 
     public medico(int crm, String nome, String especialidade, int [] convenios) {
         this.crm = crm;
