@@ -304,37 +304,35 @@ public class Operacoes {
 	
 	}
 	
-	public static void medico_Convenios() {     //não esta pronto 
-		int crm;
-		boolean retorno;
-		int tamanho = arvoreConvenio.getQuantNos();
-		int[] vet = new int [tamanho];
-		convenio [] vet2 = new convenio [tamanho];
-		
-		
-		System.out.println("---CONVÊNIOS QUE ATUA---");
-		System.out.println("Digite o CRM do médico que deseja: ");
-		crm = scanner.nextInt();
-		medico medicoaux = arvoreMedico.pesquisarMedico(crm);
-		retorno = arvoreMedico.pesquisar(crm);
-		vet = medicoaux.getConvenios();
-		do {
-		if (retorno == true) {    
-			for (int i=0; i<= tamanho; i++) {
-				vet2[i] = arvoreConvenio.pesquisarConvenio(vet[i]);
-			}
-			System.out.println(medicoaux.getNome());
-			System.out.println("Convenios: ");
-			for (int i=0; i<= tamanho; i++) {
-				System.out.println("\n"+vet2[i]);
-			}
-			
-		} else {
-			System.out.println("Médico não encotrado!");
-			
-		}
-		}while(retorno == false);
-		
+	public static void medico_Convenios() {     
+	    int crm;
+	    boolean retorno;
+	    
+	    System.out.println("---CONVÊNIOS QUE ATUA---");
+	    System.out.println("Digite o CRM do médico que deseja: ");
+	    crm = scanner.nextInt();
+	    
+	    medico medicoaux = arvoreMedico.pesquisarMedico(crm);
+	    retorno = medicoaux != null; // Verifica se o médico foi encontrado
+	    
+	    if (retorno) {    
+	        int[] vet = medicoaux.getConvenios();
+	        int tamanho = vet.length;
+	        convenio[] vet2 = new convenio[tamanho];
+	        
+	        for (int i = 0; i < tamanho; i++) {
+	            vet2[i] = arvoreConvenio.pesquisarConvenio(vet[i]);
+	        }
+	        
+	        System.out.println(medicoaux.getNome());
+	        System.out.println("Convenios: ");
+	        for (int i = 0; i < tamanho; i++) {
+	            System.out.println(vet2[i]);
+	        }
+	        
+	    } else {
+	        System.out.println("Médico não encontrado!");
+	    }
 	}
 	
 }
