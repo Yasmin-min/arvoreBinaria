@@ -316,21 +316,15 @@ public class Operacoes {
 	    crm = scanner.nextInt();
 	    
 	    medico medicoaux = arvoreMedico.pesquisarMedico(crm);
-	    retorno = medicoaux != null; // Verifica se o médico foi encontrado
+	    retorno = arvoreMedico.pesquisar(crm);
 	    
 	    if (retorno) {    
 	        int[] vet = medicoaux.getConvenios();
 	        int tamanho = vet.length;
-	        convenio[] vet2 = new convenio[tamanho];
 	        
+	        System.out.println("Dados dos convenios:");
 	        for (int i = 0; i < tamanho; i++) {
-	            vet2[i] = arvoreConvenio.pesquisarConvenio(vet[i]);
-	        }
-	        
-	        System.out.println(medicoaux.getNome());
-	        System.out.println("Convenios: ");
-	        for (int i = 0; i < tamanho; i++) {
-	            System.out.println(vet2[i]);
+	        	System.out.println("\n"+arvoreConvenio.pesquisarConvenio(vet[i]).toString());
 	        }
 	        
 	    } else {
