@@ -41,6 +41,12 @@ public class Operacoes {
 		        if (retorno==true) {
 		        	convenios[i] = convenio;
 		        	i++;
+		        	System.out.println("Desenha tentar outro id de convênio?"
+		            		+ "\n1.SIM"
+		            		+ "\n2.NÃO");
+		            x = scanner.nextInt();
+		            break;
+		        	
 		        } else {
 		        	System.out.println("Id de convenio não encontrado, tente um id já cadastrado!");
 		        	System.out.println("Desenha tentar outro id de convênio?"
@@ -58,6 +64,7 @@ public class Operacoes {
 		medico medico = new medico(crm, nome, especialidade, convenios);
 		
 		arvoreMedico.inserir(medico);
+		System.out.println("\n Médico cadastrado con sucesso!");
 	}
 	
 	public static void editar_medico() {
@@ -80,13 +87,7 @@ public class Operacoes {
 	            id[i] = idaux[i];
 	        }
 	        
-	        System.out.println("Médico encontrado:");
-	        System.out.println("Nome: " + nome);
-	        System.out.println("Especialidade: " + especialidade);
-	        System.out.println("Convênios:");
-	        for (int i = 0; i < id.length; i++) {
-	            System.out.println(id[i]);
-	        }
+	        System.out.println(arvoreMedico.pesquisarMedico(crm).toString());
 	        
 	        do {
 	            System.out.println("Digite o número da opção que você deseja editar:");
@@ -150,6 +151,7 @@ public class Operacoes {
 	    } else {
 	        System.out.println("Médico não encontrado!");
 	    }
+	    System.out.println("Médico editado com socesso!");
 		
 	}
 	
@@ -166,6 +168,7 @@ public class Operacoes {
 			} else {
 				System.out.println("Médico não encotrado");	
 			}
+			System.out.println("Médico removido com sucesso!");
 	}
 	
 	
@@ -187,6 +190,8 @@ public class Operacoes {
 		convenio convenio = new convenio(nome, id, telefone, cep);
 		
 		arvoreConvenio.inserir(convenio);
+		
+		System.out.println("Convênio cadastrado com sucesso!");
 		
 	}
 	
@@ -226,6 +231,7 @@ public class Operacoes {
 		} else {
 			System.out.println("Convênio não encotrado!");
 		}
+		System.out.println("Convênio editado com sucesso!");
 		
 	}
 	
@@ -242,6 +248,7 @@ public class Operacoes {
 		} else {
 			System.out.println("Convênio não encotrado");	
 		}
+		System.out.println("Convênio removido com sucesso!");
 	}
 	
 	public static void mostraArvore_Medico() { 
