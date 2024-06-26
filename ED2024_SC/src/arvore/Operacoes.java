@@ -29,7 +29,7 @@ public class Operacoes {
 			convenios = new int[numConvenios];
 			int x=1;
 
-			System.out.println("Desenha cadastrar um id de convênio:"
+			System.out.println("\nDesenha cadastrar um id de convênio:"
 					+ "\n1.SIM"
 					+ "\n2.NÃO");
 			x = scanner.nextInt();
@@ -44,6 +44,7 @@ public class Operacoes {
 					
 					if (retorno==true) {
 						convenios[i] = convenio;
+						System.out.println("ID cadastrado com sucesso!");
 						i++;
 						System.out.println("Deseja tentar outro id de convênio?"
 								+ "\n1.SIM"
