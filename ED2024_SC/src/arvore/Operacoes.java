@@ -181,7 +181,7 @@ public class Operacoes {
 		} else {
 			System.out.println("Médico não encotrado");	
 		}
-		System.out.println("Médico removido com sucesso!");
+
 	}
 
 
@@ -269,7 +269,7 @@ public class Operacoes {
 		} else {
 			System.out.println("Convênio não encotrado");	
 		}
-		System.out.println("Convênio removido com sucesso!");
+		
 	}
 
 	public static void mostraArvore_Medico() { 
