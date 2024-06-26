@@ -369,7 +369,7 @@ public class Operacoes {
 					convenio[x] =0;
 				}
 			}
-			removeZeros(convenio);
+			convenio = removeZeros(convenio);
 			arvoreMedico.atualizarMedicoNo(noMedico[i].getCrm(), noMedico[i].getNome(), noMedico[i].getEspecialidade(), convenio);;
 		}
 		
