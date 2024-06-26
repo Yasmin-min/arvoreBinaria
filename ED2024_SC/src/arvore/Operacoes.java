@@ -13,7 +13,7 @@ public class Operacoes {
 		boolean retorno;
 		int [] convenios = new int [arvoreConvenio.getQuantNos()];
 		convenios = new int [arvoreConvenio.getQuantNos()];
-		System.out.println("---CADASTRO MÉDICO---");
+		System.out.println("\n---CADASTRO MÉDICO---\n");
 		System.out.println("Nome: ");
 		nome = scanner.next();
 		System.out.println("CRM: ");
@@ -80,7 +80,7 @@ public class Operacoes {
 		int crm, opcao = 0;
 		boolean retorno, retornoC;
 
-		System.out.println("---EDITAR MÉDICO---");
+		System.out.println("\n---EDITAR MÉDICO---\n");
 		System.out.println("CRM do médico: ");
 		crm = scanner.nextInt();
 
@@ -132,9 +132,9 @@ public class Operacoes {
 						id = novoId;
 						
 						if(retornoC==false) {
-							System.out.println("Convenio não encontrado, tente um já cadastrado!");
+							System.out.println("\nConvenio não encontrado, tente um já cadastrado!");
 
-							System.out.println("Desenha tentar outro id de convênio?"
+							System.out.println("\nDesenha tentar outro id de convênio?"
 									+ "\n1.SIM"
 									+ "\n2.NÃO");
 							int  x = scanner.nextInt();
@@ -161,16 +161,16 @@ public class Operacoes {
 
 
 		} else {
-			System.out.println("Médico não encontrado!");
+			System.out.println("\nMédico não encontrado!");
 		}
-		System.out.println("Médico editado com socesso!");
+		System.out.println("\nMédico editado com socesso!");
 
 	}
 
 	public static void remover_Medico() {
 		int crm;
 		boolean retorno;
-		System.out.println("---EXCLUIR MÉDICO---");
+		System.out.println("\n---EXCLUIR MÉDICO---\n");
 		System.out.println("CRM do médico: ");
 		crm = scanner.nextInt(); 
 		retorno = arvoreMedico.pesquisar(crm);
@@ -190,7 +190,7 @@ public class Operacoes {
 		int id;
 		String nome, cep, telefone;
 
-		System.out.println("---CADASTRO CONVÊNIO---");
+		System.out.println("\n---CADASTRO CONVÊNIO---\n");
 		System.out.println("Nome: ");
 		nome = scanner.next();
 		System.out.println("ID: ");
@@ -218,7 +218,7 @@ public class Operacoes {
 
 		int id, opcao;
 		boolean retorno;
-		System.out.println("---EDITAR CONVÊNIO---");
+		System.out.println("\n---EDITAR CONVÊNIO---\n");
 		System.out.println("ID do convênio: ");
 		id = scanner.nextInt(); 
 		retorno = arvoreConvenio.pesquisar(id);
@@ -257,7 +257,7 @@ public class Operacoes {
 	public static void remover_Convenio() {
 		int id;
 		boolean retorno;
-		System.out.println("---EXCLUIR CONVÊNIO---");
+		System.out.println("\n---EXCLUIR CONVÊNIO---\n");
 		System.out.println("ID do convênio: ");
 		id = scanner.nextInt(); 
 		retorno = arvoreConvenio.pesquisar(id);
@@ -289,7 +289,7 @@ public class Operacoes {
 
 		vet = arvoreConvenio.CamPreFixado();
 
-		System.out.print("---ÁRVORE DE CONVÊNIOS---");
+		System.out.print("\n---ÁRVORE DE CONVÊNIOS---\n");
 		for (int i = 0; i < vet.length; i++) {
 			System.out.print("\n"+vet[i].toString() + " ");
 		}
@@ -300,7 +300,7 @@ public class Operacoes {
 
 		int crm;
 		boolean retorno;
-		System.out.println("---DADOS DO MÉDICO---");
+		System.out.println("\n---DADOS DO MÉDICO---\n");
 		System.out.println("CRM do médico: ");
 		crm = scanner.nextInt();
 		retorno = arvoreMedico.pesquisar(crm);
@@ -315,7 +315,7 @@ public class Operacoes {
 	public static void pesquisa_Convenio() { 
 		int id;
 		boolean retorno;
-		System.out.println("---DADOS DO CONVÊNIO---");
+		System.out.println("\n---DADOS DO CONVÊNIO---\n");
 		System.out.println("ID do convêcio: ");
 		id = scanner.nextInt();
 		retorno = arvoreConvenio.pesquisar(id);
@@ -331,7 +331,7 @@ public class Operacoes {
 		int crm;
 		boolean retorno;
 
-		System.out.println("---CONVÊNIOS QUE ATUA---");
+		System.out.println("\n---CONVÊNIOS QUE ATUA---\n");
 		System.out.println("Digite o CRM do médico que deseja: ");
 		crm = scanner.nextInt();
 		medico medicoaux = arvoreMedico.pesquisarMedico(crm);
