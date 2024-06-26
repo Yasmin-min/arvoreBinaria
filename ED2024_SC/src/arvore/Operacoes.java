@@ -12,7 +12,6 @@ public class Operacoes {
 		String nome, especialidade; 
 		boolean retorno;
 		int [] convenios = new int [arvoreConvenio.getQuantNos()];
-		convenios = new int [arvoreConvenio.getQuantNos()];
 		System.out.println("\n---CADASTRO MÉDICO---\n");
 		System.out.println("Nome: ");
 		nome = scanner.next();
@@ -29,13 +28,13 @@ public class Operacoes {
 			convenios = new int[numConvenios];
 			int x=1;
 
-			System.out.println("\nDesenha cadastrar um id de convênio:"
+			System.out.println("\nDeseja cadastrar um id de convênio:"
 					+ "\n1.SIM"
 					+ "\n2.NÃO");
 			x = scanner.nextInt();
-			while (x==1) {
-				int i=0;
-
+			int i=0;
+			
+			while (x==1) {				
 
 				do {
 					System.out.println("ID do convênio que ele atua: ");
@@ -44,9 +43,9 @@ public class Operacoes {
 					
 					if (retorno==true) {
 						convenios[i] = convenio;
-						System.out.println("ID cadastrado com sucesso!");
 						i++;
-						System.out.println("Deseja tentar outro id de convênio?"
+						System.out.println("ID cadastrado com sucesso!");
+						System.out.println("\nDeseja tentar outro id de convênio?"
 								+ "\n1.SIM"
 								+ "\n2.NÃO");
 						x = scanner.nextInt();

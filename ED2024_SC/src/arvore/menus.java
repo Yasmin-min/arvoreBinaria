@@ -3,8 +3,8 @@ package arvore;
 public class menus {
 	public  static void menuPrincipal(){
     	System.out.println("\n---MENU PRINCIPAL---\n");
-        System.out.println("1. Cadastro médico");
-        System.out.println("2. Cadastro convênio");
+        System.out.println("1. Menu médico");
+        System.out.println("2. Menu convênio");
         System.out.println("3. Pesquisas");
         System.out.println("4. Sair");
         System.out.print("Escolha uma opção: ");
