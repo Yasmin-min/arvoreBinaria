@@ -132,7 +132,7 @@ public class main {
 	        System.out.println();
 	    } while (escolha != 4);
 	    
-	    System.out.println("\nPrograma finalizado! \nFeito por Yasmin Neumann e Yasmin Sousa");
+	    System.out.println("\nPrograma finalizado! \nFeito por Yasmin Neumann");
 	    scanner.close();
 	}
 }
